@@ -1,14 +1,24 @@
-
 spring:
   application:
     name: vtswebapiestados
-  ## Profile Config
   config:
     use-legacy-processing: true
 ---
-## Exemplo de Configuração
 spring:
+  profiles:
+    - local
   cloud:
     config:
+      uri: http://localhost:8889
       ## Habilitar ou Não o Spring Cloud Config Client (False = desabilita)
-      enabled: false
+      enabled: true
+
+---
+spring:
+  profiles:
+    - dev
+  cloud:
+    config:
+      uri: http://localhost:8889
+      ## Habilitar ou Não o Spring Cloud Config Client (False = desabilita)
+      enabled: true
