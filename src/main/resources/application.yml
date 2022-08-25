@@ -1,0 +1,19 @@
+## Configuração do Ambiente do Cliente (Máquina na Hml) ##
+
+server:
+  port: 8082
+
+# Config do service discovery
+  #eureka:
+  # name: eureka
+  # port: 8081
+
+## Config Database
+spring:
+  datasource:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    url: jdbc:sqlserver://localhost:1433;databaseName=vtswebapi;useBulkCopyForBatchInsert=true;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 123
+    minimum-idle: 10
+    maximum-pool-size: 20
