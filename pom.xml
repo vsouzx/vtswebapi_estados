@@ -15,9 +15,6 @@
 	</parent>
 	<properties>
 		<java.version>11</java.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<spring-boot.version>2.7.3</spring-boot.version>
 		<spring-cloud.version>3.1.3</spring-cloud.version>
 		<mssql.version>11.2.0.jre11</mssql.version>
 		<lombok.version>1.18.24</lombok.version>
