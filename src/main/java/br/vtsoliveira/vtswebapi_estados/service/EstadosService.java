@@ -15,7 +15,7 @@ public class EstadosService {
     @Autowired
     private IEstadosRepository estadosRepository;
 
-    public List<EstadosResponse> findAll(){
+    public List<EstadosResponse> acharTodos(){
         List<EstadosResponse> response = new ArrayList<EstadosResponse>();
         estadosRepository.findAll().stream().forEach(e -> {
             response.add(EstadosResponse.builder()
@@ -27,7 +27,7 @@ public class EstadosService {
         return response;
     }
 
-    public List<EstadosResponse> findAllByPais(String pais){
+    public List<EstadosResponse> acharTodosEstadosPeloPais(String pais){
         List<EstadosResponse> response = new ArrayList<EstadosResponse>();
         estadosRepository.findAllByNomePais(pais).stream().forEach(e -> {
             response.add(EstadosResponse.builder()
@@ -39,7 +39,7 @@ public class EstadosService {
         return response;
     }
 
-    public EstadosResponse save(EstadosRequest request){
+    public EstadosResponse salvar(EstadosRequest request){
         estadosRepository.save(Estados.builder()
                                       .nomeEstado(request.getNomeEstado())
                                       .nomePais(request.getNomePais())
