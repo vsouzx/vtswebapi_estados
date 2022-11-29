@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.vtsoliveira.vtswebapi_estados.dto.EstadosRequest;
 import br.vtsoliveira.vtswebapi_estados.dto.EstadosResponse;
 import br.vtsoliveira.vtswebapi_estados.service.EstadosService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
-@RequestMapping("estados")
+@RequestMapping(value = "/estados")
 public class EstadosController {
 
     @Autowired
@@ -32,7 +30,7 @@ public class EstadosController {
         return ResponseEntity.ok(estadosService.acharTodos());
     }
 
-    @GetMapping(value="{nomePais}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{nomePais}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<EstadosResponse>> listarPorPais(@PathVariable("nomePais") String pais){
         return ResponseEntity.ok(estadosService.acharTodosEstadosPeloPais(pais));
     }
