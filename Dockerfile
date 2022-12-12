@@ -6,4 +6,4 @@ RUN mvn clean package -DskipTests
 FROM openjdk:11
 WORKDIR /app
 COPY --from=build ./app/target/*.jar ./app.jar
-ENTRYPOINT java -jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
