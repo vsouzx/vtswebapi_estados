@@ -1,10 +1,10 @@
 package br.vtsoliveira.vtswebapi_estados.controller;
 
+import br.vtsoliveira.vtswebapi_estados.config.websocket.NotificationWebSocket;
 import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,21 +22,30 @@ import br.vtsoliveira.vtswebapi_estados.service.EstadosService;
 @RequestMapping(value = "/estados")
 public class EstadosController {
 
-    @Autowired
-    private EstadosService estadosService;
+    private final EstadosService estadosService;
+    private final NotificationWebSocket notificationWebSocket;
+
+    public EstadosController(EstadosService estadosService,
+                             NotificationWebSocket notificationWebSocket) {
+        this.estadosService = estadosService;
+        this.notificationWebSocket = notificationWebSocket;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<EstadosResponse>> listarTodosOsEstados(){
+    public ResponseEntity<List<EstadosResponse>> listarTodosOsEstados() throws Exception {
+        notificationWebSocket.notifyNewNotification();
         return ResponseEntity.ok(estadosService.acharTodos());
     }
 
     @GetMapping(value = "/{nomePais}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<EstadosResponse>> listarPorPais(@PathVariable("nomePais") String pais){
+    public ResponseEntity<List<EstadosResponse>> listarPorPais(@PathVariable("nomePais") String pais) throws Exception {
+        notificationWebSocket.notifyNewNotification();
         return ResponseEntity.ok(estadosService.acharTodosEstadosPeloPais(pais));
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<EstadosResponse> cadastrarUmEstado(@Valid @RequestBody EstadosRequest request){
+    public ResponseEntity<EstadosResponse> cadastrarUmEstado(@Valid @RequestBody EstadosRequest request) throws Exception {
+        notificationWebSocket.notifyNewNotification();
         return ResponseEntity.ok(estadosService.salvar(request));
     }
 }
