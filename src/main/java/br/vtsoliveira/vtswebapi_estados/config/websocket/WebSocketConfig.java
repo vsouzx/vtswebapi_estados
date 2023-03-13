@@ -11,8 +11,6 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
 
     private final NotificationWebSocket meuWebSocketHandler;
-    @Value("${settings.allow-origin}")
-    private String origin;
 
     public WebSocketConfig(NotificationWebSocket meuWebSocketHandler) {
         this.meuWebSocketHandler = meuWebSocketHandler;

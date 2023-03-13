@@ -6,5 +6,5 @@ CREATE TABLE estados
 );
 
 INSERT INTO estados (id, nome_estado, nome_pais) VALUES (1,'São Paulo', 'Brasil');
-INSERT INTO estados (id, nome_estado, nome_pais) VALUES (1,'Rio de Janeiro', 'Brasil');
-INSERT INTO estados (id, nome_estado, nome_pais) VALUES (1,'Goiânia', 'Brasil');
+INSERT INTO estados (id, nome_estado, nome_pais) VALUES (2,'Rio de Janeiro', 'Brasil');
+INSERT INTO estados (id, nome_estado, nome_pais) VALUES (3,'Goiânia', 'Brasil');
