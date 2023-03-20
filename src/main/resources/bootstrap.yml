@@ -17,6 +17,6 @@ spring:
     - dev
   cloud:
     config:
-      uri: http://configserver:8889
+      uri: http://vtswebapiconfigserver:8889
       ## Habilitar ou Não o Spring Cloud Config Client (False = desabilita)
       enabled: true
